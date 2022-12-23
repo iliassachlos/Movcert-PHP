@@ -1,5 +1,8 @@
 <?php
-session_start()
+session_start();
+if (!$_SESSION['LOGGED_IN']){
+    header("Location: login.php");
+}
 ?>
 <!DOCTYPE HTML>
 <html lang="en">
@@ -46,11 +49,11 @@ session_start()
                             <div class="row full-height align-items-center">
                                 <div class="col-md-6 mx-auto">
                                     <ul class="list-unstyled menu">
-                                        <li class="active"><a href="index.html">Home</a></li>
-                                        <li><a href="rooms.html">Concerts</a></li>
-                                        <li><a href="about.html">Movies</a></li>
-                                        <li><a href="events.html">About</a></li>
-                                        <li><a href="contact.html">Login</a></li>
+                                        <li class="active"><a href="index.php">Home</a></li>
+                                        <li><a href="concerts.php">Concerts</a></li>
+                                        <li><a href="about.php">Movies</a></li>
+                                        <li><a href="about.php">About</a></li>
+                                        <li><a href="login.php">Login</a></li>
                                     </ul>
                                 </div>
                             </div>
