@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Sogo Hotel by Colorlib.com</title>
+    <title>Movcert - About Us</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="" />
     <meta name="keywords" content="" />
@@ -49,12 +49,11 @@
                                 <div class="row full-height align-items-center">
                                     <div class="col-md-6 mx-auto">
                                         <ul class="list-unstyled menu">
-                                            <li><a href="index.php">Home</a></li>
-                                            <li><a href="rooms.html">Rooms</a></li>
-                                            <li class="active"><a href="about.html">About</a></li>
-                                            <li><a href="events.html">Events</a></li>
-                                            <li><a href="contact.html">Contact</a></li>
-                                            <li><a href="reservation.html">Reservation</a></li>
+                                            <li class="active"><a href="index.php">Home</a></li>
+                                            <li><a href="concerts.php">Concerts</a></li>
+                                            <li><a href="movies.php">Movies</a></li>
+                                            <li><a href="about.php">About</a></li>
+                                            <li><a href="login.php">Login</a></li>
                                         </ul>
                                     </div>
                                 </div>

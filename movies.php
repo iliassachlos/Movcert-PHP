@@ -51,9 +51,9 @@
                                         <ul class="list-unstyled menu">
                                             <li class="active"><a href="index.php">Home</a></li>
                                             <li><a href="concerts.php">Concerts</a></li>
-                                            <li><a href="about.php">Movies</a></li>
-                                            <li><a href="events.php">About</a></li>
-                                            <li><a href="contact.php">Login</a></li>
+                                            <li><a href="movies.php">Movies</a></li>
+                                            <li><a href="about.php">About</a></li>
+                                            <li><a href="login.php">Login</a></li>
                                         </ul>
                                     </div>
                                 </div>

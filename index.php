@@ -1,8 +1,8 @@
 <?php
-session_start();
-if (!$_SESSION['LOGGED_IN']){
-    header("Location: login.php");
-}
+// session_start();
+// if (!$_SESSION['LOGGED_IN']){
+//     header("Location: login.php");
+// }
 ?>
 <!DOCTYPE HTML>
 <html lang="en">
@@ -34,7 +34,7 @@ if (!$_SESSION['LOGGED_IN']){
 <header class="site-header js-site-header">
     <div class="container-fluid">
         <div class="row align-items-center">
-            <div class="col-6 col-lg-4 site-logo" data-aos="fade"><a href="index.html">Movcert</a></div>
+            <div class="col-6 col-lg-4 site-logo" data-aos="fade"><a href="index.php">Movcert</a></div>
             <div class="col-6 col-lg-8">
                 <div class="site-menu-toggle js-site-menu-toggle" data-aos="fade">
                     <span></span>
@@ -51,7 +51,7 @@ if (!$_SESSION['LOGGED_IN']){
                                     <ul class="list-unstyled menu">
                                         <li class="active"><a href="index.php">Home</a></li>
                                         <li><a href="concerts.php">Concerts</a></li>
-                                        <li><a href="about.php">Movies</a></li>
+                                        <li><a href="movies.php">Movies</a></li>
                                         <li><a href="about.php">About</a></li>
                                         <li><a href="login.php">Login</a></li>
                                     </ul>
