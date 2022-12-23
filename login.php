@@ -1,5 +1,6 @@
 <?php
-
+    session_start();
+    require('include/config.php')
 ?>
 <!DOCTYPE HTML>
 <html lang="en">
@@ -67,15 +68,15 @@
                         <div class="row">
                             <div class="col-md-12" data-aos="fade-up" data-aos-delay="100">
 
-                                <form action="#" method="post" class="bg-white p-md-5 p-4 mb-5 border">
+                                <form action="include/loginLogic.php" method="post" class="bg-white p-md-5 p-4 mb-5 border">
                                     <div class="row">
                                         <div class="col-md-12 form-group">
-                                            <label class="text-black font-weight-bold" for="name">Username</label>
-                                            <input type="text" id="name" class="form-control ">
+                                            <label class="text-black font-weight-bold" for="username">Username</label>
+                                            <input type="text" id="username" name="username" class="form-control ">
                                         </div>
                                         <div class="col-md-12 form-group">
-                                            <label class="text-black font-weight-bold" for="phone">Password</label>
-                                            <input type="text" id="phone" class="form-control ">
+                                            <label class="text-black font-weight-bold" for="password">Password</label>
+                                            <input type="password" id="password" name="password" class="form-control ">
                                         </div>
                                     </div>
                                     <div class="text-center">
