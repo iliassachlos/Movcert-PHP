@@ -1,7 +1,7 @@
 <?php
     session_start();
     require('../main-website/include/config.php');
-    if (!$_SESSION['LOGGED_IN']) {
+    if (!isset($_SESSION['id'])) {
         header("Location: ../index.php");
     } 
 ?>
