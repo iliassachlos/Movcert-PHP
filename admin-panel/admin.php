@@ -1,3 +1,11 @@
+<?php
+    session_start();
+    require('../main-website/include/config.php');
+    if (!$_SESSION['LOGGED_IN']) {
+        header("Location: ../index.php");
+    } 
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 

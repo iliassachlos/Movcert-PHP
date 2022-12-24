@@ -9,7 +9,7 @@
     var_dump($row);
     if(password_verify($password, $row["password"])){
         $_SESSION["id"] = $row["id"];
-        header("Location: ../adminPanel.php");
+        header("Location: ../../admin-panel/admin.php");
     } else {
         header("Location: ../login.php?error=true");
     }

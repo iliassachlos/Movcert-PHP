@@ -52,7 +52,6 @@
                                             <li class="active"><a href="index.php">Home</a></li>
                                             <li><a href="concerts.php">Concerts</a></li>
                                             <li><a href="movies.php">Movies</a></li>
-                                            <li><a href="about.php">About</a></li>
                                             <li><a href="login.php">Login</a></li>
                                         </ul>
                                     </div>
