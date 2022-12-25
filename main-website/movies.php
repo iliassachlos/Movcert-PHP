@@ -53,6 +53,7 @@
                                             <li><a href="concerts.php">Concerts</a></li>
                                             <li><a href="movies.php">Movies</a></li>
                                             <li><a href="login.php">Login</a></li>
+                                            <li><a href="../admin-panel/admin.php">Admin Panel</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -65,17 +66,12 @@
     </header>
     <!-- END head -->
 
-    <section class="site-hero inner-page overlay" style="background-image: url(images/hero_4.jpg)"
+    <section class="site-hero inner-page overlay" style="background-image: url(images/finalcollage.png)"
         data-stellar-background-ratio="0.5">
         <div class="container">
             <div class="row site-hero-inner justify-content-center align-items-center">
                 <div class="col-md-10 text-center" data-aos="fade">
-                    <h1 class="heading mb-3">Rooms</h1>
-                    <ul class="custom-breadcrumbs mb-4">
-                        <li><a href="index.php">Home</a></li>
-                        <li>&bullet;</li>
-                        <li>Rooms</li>
-                    </ul>
+                    <h1 class="heading mb-3">Movies</h1>
                 </div>
             </div>
         </div>
@@ -97,10 +93,14 @@
                     <form action="#">
                         <div class="row">
                             <div class="col-md-6 mb-3 mb-lg-0 col-lg-3">
-                                <label for="checkin_date" class="font-weight-bold text-black">Check In</label>
+                                <label for="genre" class="font-weight-bold text-black">Movie Genre</label>
                                 <div class="field-icon-wrap">
-                                    <div class="icon"><span class="icon-calendar"></span></div>
-                                    <input type="text" id="checkin_date" class="form-control">
+                                    <select name="" id="genre" class="form-control">
+                                        <option value="">Action</option>
+                                        <option value="">Drama</option>
+                                        <option value="">Adventure</option>
+                                        <option value="">Documentary</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-md-6 mb-3 mb-lg-0 col-lg-3">
@@ -113,33 +113,23 @@
                             <div class="col-md-6 mb-3 mb-md-0 col-lg-3">
                                 <div class="row">
                                     <div class="col-md-6 mb-3 mb-md-0">
-                                        <label for="adults" class="font-weight-bold text-black">Adults</label>
+                                        <label for="price-range-low" class="font-weight-bold text-black">Price -
+                                            Low</label>
                                         <div class="field-icon-wrap">
-                                            <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                                            <select name="" id="adults" class="form-control">
-                                                <option value="">1</option>
-                                                <option value="">2</option>
-                                                <option value="">3</option>
-                                                <option value="">4+</option>
-                                            </select>
+                                            <input type="text" name="price-low" class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-md-6 mb-3 mb-md-0">
-                                        <label for="children" class="font-weight-bold text-black">Children</label>
+                                        <label for="price-range-high" class="font-weight-bold text-black">Price -
+                                            High</label>
                                         <div class="field-icon-wrap">
-                                            <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                                            <select name="" id="children" class="form-control">
-                                                <option value="">1</option>
-                                                <option value="">2</option>
-                                                <option value="">3</option>
-                                                <option value="">4+</option>
-                                            </select>
+                                            <input type="text" name="price-high" class="form-control ">
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-6 col-lg-3 align-self-end">
-                                <button class="btn btn-primary btn-block text-white">Check Availabilty</button>
+                                <button class="btn btn-primary btn-block text-white">Set Filters</button>
                             </div>
                         </div>
                     </form>
