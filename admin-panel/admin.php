@@ -72,6 +72,10 @@
                     <span>Concerts</span></a>
             </li>
 
+            <li>
+                <hr style="border-top: 0.5px solid #4e73df">
+            </li>
+
             <li class="nav-item active">
                 <a class="nav-link" href="../index.php">
                     <i class="fas fa-fw fa-table"></i>
