@@ -162,7 +162,7 @@
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">Available Concerts</h6>
                             <h6 style="text-align: right;" class="m-0 font-weight-bold text-primary">
-                                <a data-toggle="modal" data-target="#exampleModal" > Add Concert </a>
+                                <a data-toggle="modal" data-target="#addingModal" > Add Concert </a>
                             </h6>
                         </div>
                         <div class="card-body">
@@ -250,12 +250,12 @@
     </a>
 
     <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="logoutModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <h5 class="modal-title" id="logoutModalLabel">Ready to Leave?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
@@ -287,11 +287,11 @@
     <script src="js/demo/datatables-demo.js"></script>
 
      <!-- This is the Adding modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="addingModal" tabindex="-1" role="dialog" aria-labelledby="addingModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">New Concert</h5>
+        <h5 class="modal-title" id="addingModalLabel">New Concert</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -348,14 +348,8 @@
   </div>
 </div>
 
-    <script>$('#exampleModal').on('show.bs.modal', function (event) {
-  var button = $(event.relatedTarget) // Button that triggered the modal
-  var recipient = button.data('whatever') // Extract info from data-* attributes
-  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-  var modal = $(this)
-  modal.find('.modal-title').text('New message to ' + recipient)
-  modal.find('.modal-body input').val(recipient)
+    <script>$('#addingModal').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget) 
 })</script>
 
 </body>
