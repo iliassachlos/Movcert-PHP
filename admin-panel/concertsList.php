@@ -3,7 +3,34 @@
     require('../main-website/include/config.php');
     if (!isset($_SESSION['id'])) {
         header("Location: ../index.php");
-    } 
+    }
+
+    $query = mysqli_query($sql, 'SELECT * FROM concerts');
+    $row = mysqli_fetch_all($query);
+    $concertID = array();
+    $concertTitle = array();
+    $concertGenre = array();
+    $concertDescription = array();
+    $concertImage = array();
+    $concertPrice = array();
+    $concertStartDate = array();
+    $concertEndDate = array();
+    $concertFrequency = array();
+    $concertStartTime = array();
+    $concertSeats = array();
+    for ($i = 0; $i < sizeof($row); $i++){
+        $concertID[$i] = $row[$i][0];
+        $concertTitle[$i] = $row[$i][1];
+        $concertGenre[$i] = $row[$i][2];
+        $concertDescription[$i] = $row[$i][3];
+        $concertImage[$i] = $row[$i][4];
+        $concertPrice[$i] = $row[$i][5];
+        $concertStartDate[$i] = $row[$i][6];
+        $concertEndDate[$i] = $row[$i][7];
+        $concertFrequency[$i] = $row[$i][8];
+        $concertStartTime[$i] = $row[$i][9];
+        $concertSeats[$i] = $row[$i][10];
+    }
 ?>
 
 <!DOCTYPE html>
@@ -117,8 +144,70 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Welcome!</h1>
-                    <p class="mb-4">Welcome to the Admin Table, you can select what you want to do from the navigation bar in the left.</p>
+                    <h1 class="h3 mb-2 text-gray-800">Concerts</h1>
+                    <p class="mb-4">Below you can see and edit all the information about the concerts.</p>
+
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Title</th>
+                                            <th>Genre</th>
+                                            <th>Description</th>
+                                            <th>Image Source</th>
+                                            <th>Price</th>
+                                            <th>Start Date</th>
+                                            <th>End Date</th>
+                                            <th>Start Time</th>
+                                            <th>Frequency</th>
+                                            <th>Seats</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Title</th>
+                                            <th>Genre</th>
+                                            <th>Description</th>
+                                            <th>Image Source</th>
+                                            <th>Price</th>
+                                            <th>Start Date</th>
+                                            <th>End Date</th>
+                                            <th>Start Time</th>
+                                            <th>Frequency</th>
+                                            <th>Seats</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                        <?php
+                                            for ($i = 0; $i < sizeof($row); $i++){
+                                                echo "<tr>";
+                                                    echo "<td>$concertID[$i]</td>";
+                                                    echo "<td>$concertTitle[$i]</td>";
+                                                    echo "<td>$concertGenre[$i]</td>";
+                                                    echo "<td>$concertDescription[$i]</td>";
+                                                    echo "<td>$concertImage[$i]</td>";
+                                                    echo "<td>$concertPrice[$i]</td>";
+                                                    echo "<td>$concertStartDate[$i]</td>";
+                                                    echo "<td>$concertEndDate[$i]</td>";
+                                                    echo "<td>$concertStartTime[$i]</td>";
+                                                    echo "<td>$concertFrequency[$i]</td>";
+                                                    echo "<td>$concertSeats[$i]</td>";
+                                                echo "</tr>";
+                                            }
+                                        ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
                 <!-- /.container-fluid -->
