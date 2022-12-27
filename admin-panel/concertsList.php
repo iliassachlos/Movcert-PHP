@@ -161,6 +161,9 @@
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">Available Concerts</h6>
+                            <h6 style="text-align: right;" class="m-0 font-weight-bold text-primary">
+                                <a data-toggle="modal" data-target="#exampleModal" > Add Concert </a>
+                            </h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -282,6 +285,78 @@
 
     <!-- Page level custom scripts -->
     <script src="js/demo/datatables-demo.js"></script>
+
+     <!-- This is the Adding modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">New Concert</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="../admin-panel/include/addConcert.php" method="post">
+          <div class="form-group">
+            <label for="title" class="col-form-label">Title:</label>
+            <input type="text" class="form-control" id="title" name="title">
+          </div>
+          <div class="form-group">
+            <label for="genre" class="col-form-label">Genre:</label>
+            <input type="text" class="form-control" id="genre" name="genre"></input>
+          </div>
+          <div class="form-group">
+            <label for="description" class="col-form-label">Description:</label>
+            <input type="text" class="form-control" id="description" name="description"></input>
+          </div>
+          <div class="form-group">
+            <label for="image" class="col-form-label">Image Source:</label>
+            <input type="text" class="form-control" id="image" name="image"></input>
+          </div>
+          <div class="form-group">
+            <label for="price" class="col-form-label">Price:</label>
+            <input type="text" class="form-control" id="price" name="price"></input>
+          </div>
+          <div class="form-group">
+            <label for="start_date" class="col-form-label">Start Date:</label>
+            <input type="date" class="form-control" id="start_date" name="start_date"></input>
+          </div>
+          <div class="form-group">
+            <label for="end_date" class="col-form-label">End Date:</label>
+            <input type="date" class="form-control" id="end_date" name="end_date"></input>
+          </div>
+          <div class="form-group">
+            <label for="start_time" class="col-form-label">Start Time:</label>
+            <input type="time" class="form-control" id="start_time" name="start_time"></input>
+          </div>
+          <div class="form-group">
+            <label for="frequency" class="col-form-label">Frequency:</label>
+            <input type="text" class="form-control" id="frequency" name="frequency"></input>
+          </div>
+          <div class="form-group">
+            <label for="seats" class="col-form-label">Seats:</label>
+            <input type="text" class="form-control" id="seats" name="seats"></input>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Add Concert</button>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <script>$('#exampleModal').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget) // Button that triggered the modal
+  var recipient = button.data('whatever') // Extract info from data-* attributes
+  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+  var modal = $(this)
+  modal.find('.modal-title').text('New message to ' + recipient)
+  modal.find('.modal-body input').val(recipient)
+})</script>
 
 </body>
 
