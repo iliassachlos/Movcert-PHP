@@ -171,7 +171,7 @@
                                             <th>Title</th>
                                             <th>Genre</th>
                                             <th>Description</th>
-                                            <th>Image Source</th>
+                                            <th>Poster</th>
                                             <th>Price</th>
                                             <th>Start Date</th>
                                             <th>End Date</th>
@@ -186,7 +186,7 @@
                                             <th>Title</th>
                                             <th>Genre</th>
                                             <th>Description</th>
-                                            <th>Image Source</th>
+                                            <th>Poster</th>
                                             <th>Price</th>
                                             <th>Start Date</th>
                                             <th>End Date</th>
@@ -203,7 +203,7 @@
                                                     echo "<td>$concertTitle[$i]</td>";
                                                     echo "<td>$concertGenre[$i]</td>";
                                                     echo "<td>$concertDescription[$i]</td>";
-                                                    echo "<td>$concertImage[$i]</td>";
+                                                    echo "<td><img src='$concertImage[$i]' width='200px' height='200px'></td>";
                                                     echo "<td>$concertPrice[$i]</td>";
                                                     echo "<td>$concertStartDate[$i]</td>";
                                                     echo "<td>$concertEndDate[$i]</td>";

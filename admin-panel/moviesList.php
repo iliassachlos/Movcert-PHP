@@ -174,7 +174,7 @@
                                             <th>Title</th>
                                             <th>Genre</th>
                                             <th>Description</th>
-                                            <th>Image Source</th>
+                                            <th>Poster</th>
                                             <th>Price</th>
                                             <th>Start Date</th>
                                             <th>End Date</th>
@@ -189,7 +189,7 @@
                                             <th>Title</th>
                                             <th>Genre</th>
                                             <th>Description</th>
-                                            <th>Image Source</th>
+                                            <th>Poster</th>
                                             <th>Price</th>
                                             <th>Start Date</th>
                                             <th>End Date</th>
@@ -206,7 +206,7 @@
                                                     echo "<td>$movieTitle[$i]</td>";
                                                     echo "<td>$movieGenre[$i]</td>";
                                                     echo "<td>$movieDescription[$i]</td>";
-                                                    echo "<td>$movieImage[$i]</td>";
+                                                    echo "<td><img src='$movieImage[$i]' width='200px' height='300px'></td>";
                                                     echo "<td>$moviePrice[$i]</td>";
                                                     echo "<td>$movieStartDate[$i]</td>";
                                                     echo "<td>$movieEndDate[$i]</td>";
