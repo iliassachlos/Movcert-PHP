@@ -99,6 +99,12 @@
                     <span>Concerts</span></a>
             </li>
 
+            <li class="nav-item active">
+                <a class="nav-link" href="../index.php">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>To Main Website</span></a>
+            </li>
+
             <!-- Nav Item - Tables -->
             <li class="nav-item active">
                 <a class="nav-link" href="../admin-panel/include/logoutLogic.php">
