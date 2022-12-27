@@ -5,31 +5,31 @@
         header("Location: ../index.php");
     }
 
-    $query = mysqli_query($sql, 'SELECT * FROM movies');
+    $query = mysqli_query($sql, 'SELECT * FROM concerts');
     $row = mysqli_fetch_all($query);
-    $movieID = array();
-    $movieTitle = array();
-    $movieGenre = array();
-    $movieDescription = array();
-    $movieImage = array();
-    $moviePrice = array();
-    $movieStartDate = array();
-    $movieEndDate = array();
-    $movieFrequency = array();
-    $movieStartTime = array();
-    $movieSeats = array();
+    $concertID = array();
+    $concertTitle = array();
+    $concertGenre = array();
+    $concertDescription = array();
+    $concertImage = array();
+    $concertPrice = array();
+    $concertStartDate = array();
+    $concertEndDate = array();
+    $concertFrequency = array();
+    $concertStartTime = array();
+    $concertSeats = array();
     for ($i = 0; $i < sizeof($row); $i++){
-        $movieID[$i] = $row[$i][0];
-        $movieTitle[$i] = $row[$i][1];
-        $movieGenre[$i] = $row[$i][2];
-        $movieDescription[$i] = $row[$i][3];
-        $movieImage[$i] = $row[$i][4];
-        $moviePrice[$i] = $row[$i][5];
-        $movieStartDate[$i] = $row[$i][6];
-        $movieEndDate[$i] = $row[$i][7];
-        $movieFrequency[$i] = $row[$i][8];
-        $movieStartTime[$i] = $row[$i][9];
-        $movieSeats[$i] = $row[$i][10];
+        $concertID[$i] = $row[$i][0];
+        $concertTitle[$i] = $row[$i][1];
+        $concertGenre[$i] = $row[$i][2];
+        $concertDescription[$i] = $row[$i][3];
+        $concertImage[$i] = $row[$i][4];
+        $concertPrice[$i] = $row[$i][5];
+        $concertStartDate[$i] = $row[$i][6];
+        $concertEndDate[$i] = $row[$i][7];
+        $concertFrequency[$i] = $row[$i][8];
+        $concertStartTime[$i] = $row[$i][9];
+        $concertSeats[$i] = $row[$i][10];
     }
 ?>
 
@@ -154,19 +154,19 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Movies</h1>
-                    <p class="mb-4">Below you can see and edit all the information about the movies.</p>
+                    <h1 class="h3 mb-2 text-gray-800">Concerts</h1>
+                    <p class="mb-4">Below you can see and edit all the information about the concerts.</p>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Available Movies</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Available Concerts</h6>
                             <h6 style="text-align: right;" class="m-0 font-weight-bold text-primary">
-                                <a data-toggle="modal" data-target="#addingModal" > Add Movie </a>
+                                <a data-toggle="modal" data-target="#addingModal" > Add Concert </a>
                             </h6>
                             <br>
                             <h6 style="text-align: right;" class="m-0 font-weight-bold text-primary">
-                                <a data-toggle="modal" data-target="#deleteModal" > Delete Movie </a>
+                                <a data-toggle="modal" data-target="#deleteModal" > Delete Concert </a>
                             </h6>
                         </div>
                         <div class="card-body">
@@ -206,17 +206,17 @@
                                         <?php
                                             for ($i = 0; $i < sizeof($row); $i++){
                                                 echo "<tr>";
-                                                    echo "<td>$movieID[$i]</td>";
-                                                    echo "<td>$movieTitle[$i]</td>";
-                                                    echo "<td>$movieGenre[$i]</td>";
-                                                    echo "<td>$movieDescription[$i]</td>";
-                                                    echo "<td><img src='$movieImage[$i]' width='200px' height='300px'></td>";
-                                                    echo "<td>$moviePrice[$i]</td>";
-                                                    echo "<td>$movieStartDate[$i]</td>";
-                                                    echo "<td>$movieEndDate[$i]</td>";
-                                                    echo "<td>$movieStartTime[$i]</td>";
-                                                    echo "<td>$movieFrequency[$i]</td>";
-                                                    echo "<td>$movieSeats[$i]</td>";
+                                                    echo "<td>$concertID[$i]</td>";
+                                                    echo "<td>$concertTitle[$i]</td>";
+                                                    echo "<td>$concertGenre[$i]</td>";
+                                                    echo "<td>$concertDescription[$i]</td>";
+                                                    echo "<td><img src='$concertImage[$i]' width='200px' height='200px'></td>";
+                                                    echo "<td>$concertPrice[$i]</td>";
+                                                    echo "<td>$concertStartDate[$i]</td>";
+                                                    echo "<td>$concertEndDate[$i]</td>";
+                                                    echo "<td>$concertStartTime[$i]</td>";
+                                                    echo "<td>$concertFrequency[$i]</td>";
+                                                    echo "<td>$concertSeats[$i]</td>";
                                                 echo "</tr>";
                                             }
                                         ?>
@@ -290,18 +290,18 @@
     <!-- Page level custom scripts -->
     <script src="js/demo/datatables-demo.js"></script>
 
-    <!-- This is the Adding modal -->
+     <!-- This is the Adding modal -->
 <div class="modal fade" id="addingModal" tabindex="-1" role="dialog" aria-labelledby="addingModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="addingModalLabel">New Movie</h5>
+        <h5 class="modal-title" id="addingModalLabel">New Concert</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <form action="../admin-panel/include/addMovie.php" method="post">
+        <form action="../admin-panel/include/addConcert.php" method="post">
           <div class="form-group">
             <label for="title" class="col-form-label">Title:</label>
             <input type="text" class="form-control" id="title" name="title">
@@ -332,7 +332,7 @@
           </div>
           <div class="form-group">
             <label for="start_time" class="col-form-label">Start Time:</label>
-            <input type="datetime-local" class="form-control" id="start_time" name="start_time"></input>
+            <input type="time" class="form-control" id="start_time" name="start_time"></input>
           </div>
           <div class="form-group">
             <label for="frequency" class="col-form-label">Frequency:</label>
@@ -344,7 +344,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Add Movie</button>
+            <button type="submit" class="btn btn-primary">Add Concert</button>
             </div>
         </form>
       </div>
@@ -353,28 +353,28 @@
 </div>
 
     <script>$('#addingModal').on('show.bs.modal', function (event) {
-  var button = $(event.relatedTarget)
+  var button = $(event.relatedTarget) 
 })</script>
 
     <!-- This is the Deleting Modal -->
-  <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="deleteModalLabel">Delete Movie</h5>
+        <h5 class="modal-title" id="deleteModalLabel">Delete Concert</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <form action="../admin-panel/include/deleteMovie.php" method="post">
+        <form action="../admin-panel/include/deleteConcert.php" method="post">
           <div class="form-group">
-            <label for="title" class="col-form-label">Enter the Title for the Movie you want to Delete:</label>
+            <label for="title" class="col-form-label">Enter the Title for the Concert you want to Delete:</label>
             <input type="text" class="form-control" id="title" name="title">
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Delete This Movie</button>
+            <button type="submit" class="btn btn-primary">Delete This Concert</button>
           </div>
         </form>
       </div>
