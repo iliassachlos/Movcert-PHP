@@ -164,6 +164,10 @@
                             <h6 style="text-align: right;" class="m-0 font-weight-bold text-primary">
                                 <a data-toggle="modal" data-target="#addingModal" > Add Concert </a>
                             </h6>
+                            <br>
+                            <h6 style="text-align: right;" class="m-0 font-weight-bold text-primary">
+                                <a data-toggle="modal" data-target="#deleteModal" > Delete Concert </a>
+                            </h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -351,6 +355,39 @@
     <script>$('#addingModal').on('show.bs.modal', function (event) {
   var button = $(event.relatedTarget) 
 })</script>
+
+    <!-- This is the Deleting Modal -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteModalLabel">Delete Concert</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="../admin-panel/include/deleteConcert.php" method="post">
+          <div class="form-group">
+            <label for="title" class="col-form-label">Enter the Title for the Concert you want to Delete:</label>
+            <input type="text" class="form-control" id="title" name="title">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Delete This Concert</button>
+          </div>
+        </form>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<script>
+    $('#deleteModal').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget)
+})
+</script>
 
 </body>
 
