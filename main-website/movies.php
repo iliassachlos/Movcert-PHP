@@ -1,3 +1,20 @@
+<?php
+session_start();
+require_once("include/config.php");
+$query = mysqli_query($sql, "SELECT * FROM movies");
+$row = mysqli_fetch_all($query);
+$movieID = array();
+$movieTitle = array();
+$movieGenre = array();
+$movieDescription = array();
+$movieImage = array();
+$moviePrice = array();
+$movieStartDate = array();
+$movieEndDate = array();
+$movieFrequency = array();
+$movieStartTime = array();
+$movieSeats = array();
+?>
 <!DOCTYPE HTML>
 <html>
 
