@@ -72,7 +72,7 @@ session_start();
                                     <div class="row">
                                         <div class="col-md-12 form-group">
                                             <?php
-                                            if ($_GET["error"] == true) {
+                                            if (@$_GET["error"] == true) {
                                             ?>
                                             <div class="alert alert-danger">
                                                 <strong>Wrong Username or Password</strong><br> Please Try Again

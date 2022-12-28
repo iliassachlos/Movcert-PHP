@@ -412,8 +412,16 @@
           <div class="form-group">
             <label for="optionsList" class="col-form-label">Choose the field you want to change:</label>
             <select name="optionsList" id="optionsList" class="form-control">
-              <option value="id">ID</option>
               <option value="title">Title</option>
+              <option value="genre">Genre</option>
+              <option value="description">Description</option>
+              <option value="image">Image</option>
+              <option value="price">Price</option>
+              <option value="begin_date">Start Date</option>
+              <option value="end_date">End Date</option>
+              <option value="frequency">Frequency</option>
+              <option value="start_time">Start Time</option>
+              <option value="total_seats_count">Seats</option>
             </select>
           </div>
           <div class="form-group">
