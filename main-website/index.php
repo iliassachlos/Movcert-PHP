@@ -3,6 +3,8 @@
 // if (!$_SESSION['LOGGED_IN']){
 //     header("Location: login.php");
 // }
+session_start();
+require('include/config.php');
 ?>
 <!DOCTYPE HTML>
 <html lang="en">
@@ -54,8 +56,11 @@
                                             <li class="active"><a href="index.php">Home</a></li>
                                             <li><a href="concerts.php">Concerts</a></li>
                                             <li><a href="movies.php">Movies</a></li>
-                                            <li><a href="login.php">Login</a></li>
-                                            <li><a href="../admin-panel/admin.php">Admin Panel</a></li>
+                                            <?php
+                                                if(isset($_SESSION["id"])){
+                                                    echo "<li><a href='../admin-panel/admin.php'>Admin Panel</a></li>";
+                                                }
+                                            ?>
                                         </ul>
                                     </div>
                                 </div>
