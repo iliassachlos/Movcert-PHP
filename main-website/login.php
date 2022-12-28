@@ -47,7 +47,7 @@ session_start();
                             <div class="container">
                                 <div class="row full-height align-items-center">
                                     <div class="col-md-6 mx-auto">
-                                        <h1 style="color: white">LOGIN TO BROWSE THE WEBSITE</h1>
+                                        <h1 style="color: white">Login To Continue To Admin Panel</h1>
                                     </div>
                                 </div>
                             </div>
@@ -71,6 +71,15 @@ session_start();
                                     class="bg-white p-md-5 p-4 mb-5 border">
                                     <div class="row">
                                         <div class="col-md-12 form-group">
+                                            <?php
+                                            if ($_GET["error"] == true) {
+                                            ?>
+                                            <div class="alert alert-danger">
+                                                <strong>Wrong Username or Password</strong><br> Please Try Again
+                                            </div>
+                                            <?php
+                                            }
+                                            ?>
                                             <label class="text-black font-weight-bold" for="username">Username</label>
                                             <input type="text" id="username" name="username" class="form-control ">
                                         </div>

@@ -1,8 +1,8 @@
 <?php
-    session_start();
-    require('config.php');
-    $username = $_POST["username"];
-    $password = $_POST["password"];
+session_start();
+require('config.php');
+$username = $_POST["username"];
+$password = $_POST["password"];
 
     $query = mysqli_query($sql, 'SELECT * FROM users WHERE username="'. $username .'"');
     $row = mysqli_fetch_assoc($query);
