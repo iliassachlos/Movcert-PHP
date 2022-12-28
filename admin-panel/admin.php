@@ -2,7 +2,7 @@
     session_start();
     require('../main-website/include/config.php');
     if (!isset($_SESSION['id'])) {
-        header("Location: ../index.php");
+        header("Location: ../main-website/login.php");
     } 
 ?>
 
