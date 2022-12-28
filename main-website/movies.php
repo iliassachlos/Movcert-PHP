@@ -1,7 +1,7 @@
 <?php
 session_start();
-require_once("include/config.php");
-$query = mysqli_query($sql, "SELECT * FROM movies");
+require("include/config.php");
+$query = mysqli_query($sql, 'SELECT * FROM movies');
 $row = mysqli_fetch_all($query);
 $movieID = array();
 $movieTitle = array();
@@ -14,6 +14,19 @@ $movieEndDate = array();
 $movieFrequency = array();
 $movieStartTime = array();
 $movieSeats = array();
+for ($i = 0; $i < sizeof($row); $i++) {
+    $movieID[$i] = $row[$i][0];
+    $movieTitle[$i] = $row[$i][1];
+    $movieGenre[$i] = $row[$i][2];
+    $movieDescription[$i] = $row[$i][3];
+    $movieImage[$i] = $row[$i][4];
+    $moviePrice[$i] = $row[$i][5];
+    $movieStartDate[$i] = $row[$i][6];
+    $movieEndDate[$i] = $row[$i][7];
+    $movieFrequency[$i] = $row[$i][8];
+    $movieStartTime[$i] = $row[$i][9];
+    $movieSeats[$i] = $row[$i][10];
+}
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -162,77 +175,21 @@ $movieSeats = array();
         <div class="container">
 
             <div class="row">
+                <?php
+                for ($i = 0; $i < sizeof($row); $i++) {
+                ?>
                 <div class="col-md-6 col-lg-4 mb-5" data-aos="fade-up">
                     <a href="#" class="room">
                         <figure class="img-wrap">
-                            <img src="images/img_1.jpg" alt="Free website template" class="img-fluid mb-3">
+                            <?php echo '<img src="' . $movieImage[$i] . '" alt="Free website template" width="400px" height="500px">' ?>
                         </figure>
                         <div class="p-3 text-center room-info">
-                            <h2>Single Room</h2>
-                            <span class="text-uppercase letter-spacing-1">90$ / per night</span>
+                            <?php echo '<h2>' . $movieTitle[$i] . '</h2>' ?>
+                            <?php echo ' <span class="text-uppercase letter-spacing-1">Price ' . $moviePrice[$i] . '€</span>' ?>
                         </div>
                     </a>
                 </div>
-
-                <div class="col-md-6 col-lg-4 mb-5" data-aos="fade-up">
-                    <a href="#" class="room">
-                        <figure class="img-wrap">
-                            <img src="images/img_2.jpg" alt="Free website template" class="img-fluid mb-3">
-                        </figure>
-                        <div class="p-3 text-center room-info">
-                            <h2>Family Room</h2>
-                            <span class="text-uppercase letter-spacing-1">120$ / per night</span>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col-md-6 col-lg-4 mb-5" data-aos="fade-up">
-                    <a href="#" class="room">
-                        <figure class="img-wrap">
-                            <img src="images/img_3.jpg" alt="Free website template" class="img-fluid mb-3">
-                        </figure>
-                        <div class="p-3 text-center room-info">
-                            <h2>Presidential Room</h2>
-                            <span class="text-uppercase letter-spacing-1">250$ / per night</span>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col-md-6 col-lg-4 mb-5" data-aos="fade-up">
-                    <a href="#" class="room">
-                        <figure class="img-wrap">
-                            <img src="images/img_1.jpg" alt="Free website template" class="img-fluid mb-3">
-                        </figure>
-                        <div class="p-3 text-center room-info">
-                            <h2>Single Room</h2>
-                            <span class="text-uppercase letter-spacing-1">90$ / per night</span>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col-md-6 col-lg-4 mb-5" data-aos="fade-up">
-                    <a href="#" class="room">
-                        <figure class="img-wrap">
-                            <img src="images/img_2.jpg" alt="Free website template" class="img-fluid mb-3">
-                        </figure>
-                        <div class="p-3 text-center room-info">
-                            <h2>Family Room</h2>
-                            <span class="text-uppercase letter-spacing-1">120$ / per night</span>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col-md-6 col-lg-4 mb-5" data-aos="fade-up">
-                    <a href="#" class="room">
-                        <figure class="img-wrap">
-                            <img src="images/img_3.jpg" alt="Free website template" class="img-fluid mb-3">
-                        </figure>
-                        <div class="p-3 text-center room-info">
-                            <h2>Presidential Room</h2>
-                            <span class="text-uppercase letter-spacing-1">250$ / per night</span>
-                        </div>
-                    </a>
-                </div>
+                <?php } ?>
 
             </div>
         </div>

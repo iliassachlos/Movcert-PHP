@@ -15,7 +15,7 @@
     $moviePrice = array();
     $movieStartDate = array();
     $movieEndDate = array();
-    $movieFrequency = array();
+    $movieFrequency = array();  
     $movieStartTime = array();
     $movieSeats = array();
     for ($i = 0; $i < sizeof($row); $i++){
