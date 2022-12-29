@@ -1,8 +1,33 @@
 <?php
 session_start();
 require("include/config.php");
+$query = mysqli_query($sql, 'SELECT * FROM concerts');
+$row = mysqli_fetch_all($query);
+$concertID = array();
+$concertTitle = array();
+$concertGenre = array();
+$concertDescription = array();
+$concertImage = array();
+$concertPrice = array();
+$concertStartDate = array();
+$concertEndDate = array();
+$concertFrequency = array();
+$concertStartTime = array();
+$concertSeats = array();
+for ($i = 0; $i < sizeof($row); $i++) {
+    $concertID[$i] = $row[$i][0];
+    $concertTitle[$i] = $row[$i][1];
+    $concertGenre[$i] = $row[$i][2];
+    $concertDescription[$i] = $row[$i][3];
+    $concertImage[$i] = $row[$i][4];
+    $concertPrice[$i] = $row[$i][5];
+    $concertStartDate[$i] = $row[$i][6];
+    $concertEndDate[$i] = $row[$i][7];
+    $concertFrequency[$i] = $row[$i][8];
+    $concertStartTime[$i] = $row[$i][9];
+    $concertSeats[$i] = $row[$i][10];
+}
 ?>
-
 <!DOCTYPE HTML>
 <html>
 
@@ -54,14 +79,14 @@ require("include/config.php");
                                 <div class="row full-height align-items-center">
                                     <div class="col-md-6 mx-auto">
                                         <ul class="list-unstyled menu">
-                                        <li class="active"><a href="index.php">Home</a></li>
-                                        <li><a href="concerts.php">Concerts</a></li>
-                                        <li><a href="movies.php">Movies</a></li>
-                                        <?php
-                                            if(isset($_SESSION["id"])){
-                                                echo "<li><a href='../admin-panel/admin.php'>Admin Panel</a></li>";
-                                            }
-                                        ?>
+                                            <li class="active"><a href="index.php">Home</a></li>
+                                            <li><a href="concerts.php">Concerts</a></li>
+                                            <li><a href="movies.php">Movies</a></li>
+                                            <?php
+                                                if(isset($_SESSION["id"])){
+                                                    echo "<li><a href='../admin-panel/admin.php'>Admin Panel</a></li>";
+                                                }
+                                            ?>
                                         </ul>
                                     </div>
                                 </div>
@@ -103,12 +128,12 @@ require("include/config.php");
                             <div class="col-md-6 mb-3 mb-lg-0 col-lg-3">
                                 <label for="genre" class="font-weight-bold text-black">Music Genre</label>
                                 <div class="field-icon-wrap">
-                                <select name="" id="genre" class="form-control">
-                                                <option value="">Pop</option>
-                                                <option value="">Rock</option>
-                                                <option value="">Hip-Hop</option>
-                                                <option value="">RnB</option>
-                                            </select>
+                                    <select name="" id="genre" class="form-control">
+                                        <option value="">Pop</option>
+                                        <option value="">Rock</option>
+                                        <option value="">Hip-Hop</option>
+                                        <option value="">Metal</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-md-6 mb-3 mb-lg-0 col-lg-3">
@@ -121,13 +146,15 @@ require("include/config.php");
                             <div class="col-md-6 mb-3 mb-md-0 col-lg-3">
                                 <div class="row">
                                     <div class="col-md-6 mb-3 mb-md-0">
-                                        <label for="price-range-low" class="font-weight-bold text-black">Price - Low</label>
+                                        <label for="price-range-low" class="font-weight-bold text-black">Price -
+                                            Low</label>
                                         <div class="field-icon-wrap">
                                             <input type="text" name="price-low" class="form-control">
                                         </div>
-                                    </div>  
+                                    </div>
                                     <div class="col-md-6 mb-3 mb-md-0">
-                                        <label for="price-range-high" class="font-weight-bold text-black">Price - High</label>
+                                        <label for="price-range-high" class="font-weight-bold text-black">Price -
+                                            High</label>
                                         <div class="field-icon-wrap">
                                             <input type="text" name="price-high" class="form-control ">
                                         </div>
@@ -151,122 +178,27 @@ require("include/config.php");
         <div class="container">
 
             <div class="row">
-                <div class="col-md-6 col-lg-4 mb-5" data-aos="fade-up">
-                    <a href="singlepage.php" class="room">
-                        <figure class="img-wrap">
-                            <img src="images/img_1.jpg" alt="Free website template" class="img-fluid mb-3">
-                        </figure>
-                        <div class="p-3 text-center room-info">
-                            <h2>Single Room</h2>
-                            <span class="text-uppercase letter-spacing-1">90€ | 48 Tickets Available</span>
-                        </div>
-                    </a>
-                </div>
-
+                <?php
+                for ($i = 0; $i < sizeof($row); $i++) {
+                ?>
                 <div class="col-md-6 col-lg-4 mb-5" data-aos="fade-up">
                     <a href="#" class="room">
                         <figure class="img-wrap">
-                            <img src="images/img_2.jpg" alt="Free website template" class="img-fluid mb-3">
+                            <?php echo '<img src="' . $concertImage[$i] . '" alt="Free website template" width="400px" height="400px">' ?>
                         </figure>
                         <div class="p-3 text-center room-info">
-                            <h2>Family Room</h2>
-                            <span class="text-uppercase letter-spacing-1">120$ / per night</span>
+                            <?php echo '<h2>' . $concertTitle[$i] . '</h2>' ?>
+                            <?php echo ' <span class="text-uppercase letter-spacing-1">Price ' . $concertPrice[$i] . '€</span>' ?>
                         </div>
                     </a>
                 </div>
-
-                <div class="col-md-6 col-lg-4 mb-5" data-aos="fade-up">
-                    <a href="#" class="room">
-                        <figure class="img-wrap">
-                            <img src="images/img_3.jpg" alt="Free website template" class="img-fluid mb-3">
-                        </figure>
-                        <div class="p-3 text-center room-info">
-                            <h2>Presidential Room</h2>
-                            <span class="text-uppercase letter-spacing-1">250$ / per night</span>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col-md-6 col-lg-4 mb-5" data-aos="fade-up">
-                    <a href="#" class="room">
-                        <figure class="img-wrap">
-                            <img src="images/img_1.jpg" alt="Free website template" class="img-fluid mb-3">
-                        </figure>
-                        <div class="p-3 text-center room-info">
-                            <h2>Single Room</h2>
-                            <span class="text-uppercase letter-spacing-1">90$ / per night</span>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col-md-6 col-lg-4 mb-5" data-aos="fade-up">
-                    <a href="#" class="room">
-                        <figure class="img-wrap">
-                            <img src="images/img_2.jpg" alt="Free website template" class="img-fluid mb-3">
-                        </figure>
-                        <div class="p-3 text-center room-info">
-                            <h2>Family Room</h2>
-                            <span class="text-uppercase letter-spacing-1">120$ / per night</span>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col-md-6 col-lg-4 mb-5" data-aos="fade-up">
-                    <a href="#" class="room">
-                        <figure class="img-wrap">
-                            <img src="images/img_3.jpg" alt="Free website template" class="img-fluid mb-3">
-                        </figure>
-                        <div class="p-3 text-center room-info">
-                            <h2>Presidential Room</h2>
-                            <span class="text-uppercase letter-spacing-1">250$ / per night</span>
-                        </div>
-                    </a>
-                </div>
+                <?php } ?>
 
             </div>
         </div>
     </section>
 
-    <section class="section bg-light">
-
-        <div class="container">
-            <div class="row justify-content-center text-center mb-5">
-                <div class="col-md-7">
-                    <h2 class="heading" data-aos="fade">Great Offers</h2>
-                    <p data-aos="fade">Far far away, behind the word mountains, far from the countries Vokalia and
-                        Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the
-                        coast of the Semantics, a large language ocean.</p>
-                </div>
-            </div>
-
-            <div class="site-block-half d-block d-lg-flex bg-white" data-aos="fade" data-aos-delay="100">
-                <a href="#" class="image d-block bg-image-2" style="background-image: url('images/img_1.jpg');"></a>
-                <div class="text">
-                    <span class="d-block mb-4"><span class="display-4 text-primary">$199</span> <span
-                            class="text-uppercase letter-spacing-2">/ per night</span> </span>
-                    <h2 class="mb-4">Family Room</h2>
-                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there
-                        live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics,
-                        a large language ocean.</p>
-                    <p><a href="#" class="btn btn-primary text-white">Book Now</a></p>
-                </div>
-            </div>
-            <div class="site-block-half d-block d-lg-flex bg-white" data-aos="fade" data-aos-delay="200">
-                <a href="#" class="image d-block bg-image-2 order-2"
-                    style="background-image: url('images/img_2.jpg');"></a>
-                <div class="text order-1">
-                    <span class="d-block mb-4"><span class="display-4 text-primary">$299</span> <span
-                            class="text-uppercase letter-spacing-2">/ per night</span> </span>
-                    <h2 class="mb-4">Presidential Room</h2>
-                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there
-                        live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics,
-                        a large language ocean.</p>
-                    <p><a href="#" class="btn btn-primary text-white">Book Now</a></p>
-                </div>
-            </div>
-
-        </div>
-    </section>
+   
     <footer class="bg-dark text-center text-lg-start">
         <div class="text-center p-3" style="background-color: #1A1A1A">
             Made With &nbsp; <i class="fa fa-heart"></i> &nbsp; By Alexandros and Elias
