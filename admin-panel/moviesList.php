@@ -18,6 +18,7 @@
     $movieFrequency = array();  
     $movieStartTime = array();
     $movieSeats = array();
+    $movieBackgroundImage = array();
     for ($i = 0; $i < sizeof($row); $i++){
         $movieID[$i] = $row[$i][0];
         $movieTitle[$i] = $row[$i][1];
@@ -30,6 +31,7 @@
         $movieFrequency[$i] = $row[$i][8];
         $movieStartTime[$i] = $row[$i][9];
         $movieSeats[$i] = $row[$i][10];
+        $movieBackgroundImage[$i] = $row[$i][11];
     }
 ?>
 
@@ -189,6 +191,7 @@
                                             <th>Start Time</th>
                                             <th>Frequency</th>
                                             <th>Seats</th>
+                                            <th>Background</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -204,6 +207,7 @@
                                             <th>Start Time</th>
                                             <th>Frequency</th>
                                             <th>Seats</th>
+                                            <th>Background</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
@@ -221,6 +225,7 @@
                                                     echo "<td>$movieStartTime[$i]</td>";
                                                     echo "<td>$movieFrequency[$i]</td>";
                                                     echo "<td>$movieSeats[$i]</td>";
+                                                    echo "<td>$movieBackgroundImage</td>";
                                                 echo "</tr>";
                                             }
                                         ?>
@@ -256,26 +261,6 @@
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
-
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="logoutModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="logoutModalLabel">Ready to Leave?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
@@ -345,6 +330,10 @@
           <div class="form-group">
             <label for="seats" class="col-form-label">Seats:</label>
             <input type="text" class="form-control" id="seats" name="seats"></input>
+          </div>
+          <div>
+            <label for="background" class="col-form-label">Background Image Source:</label>
+            <input type="text" class="form-control" id="background" name="background">
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -422,6 +411,7 @@
               <option value="frequency">Frequency</option>
               <option value="start_time">Start Time</option>
               <option value="total_seats_count">Seats</option>
+              <option value="background">Background</option>
             </select>
           </div>
           <div class="form-group">
