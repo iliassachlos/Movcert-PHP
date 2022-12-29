@@ -225,7 +225,7 @@
                                                     echo "<td>$concertStartTime[$i]</td>";
                                                     echo "<td>$concertFrequency[$i]</td>";
                                                     echo "<td>$concertSeats[$i]</td>";
-                                                    echo "<td>$concertBackgroundImage[$i]</td>";
+                                                    echo "<td><img src='$concertBackgroundImage[$i]' width='200px' height='200px'></td>";
                                                 echo "</tr>";
                                             }
                                         ?>
