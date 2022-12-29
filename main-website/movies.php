@@ -218,6 +218,7 @@ if (!empty($_GET["price-high"])) {
                 $movieFrequency = array();  
                 $movieStartTime = array();
                 $movieSeats = array();
+                $backgroundImage = array();
                 for ($i = 0; $i < sizeof($row); $i++){
                     $movieID[$i] = $row[$i][0];
                     $movieTitle[$i] = $row[$i][1];
@@ -230,6 +231,7 @@ if (!empty($_GET["price-high"])) {
                     $movieFrequency[$i] = $row[$i][8];
                     $movieStartTime[$i] = $row[$i][9];
                     $movieSeats[$i] = $row[$i][10];
+                    $backgroundImage = $row[$i][11];
                 }
                 for ($i = 0; $i < sizeof($row); $i++) {
                 ?>
