@@ -1,7 +1,7 @@
 <?php
 session_start();
 require("include/config.php");
-$query = mysqli_query($sql, 'SELECT * FROM concerts');
+$query = mysqli_query($sql, "SELECT * FROM concerts");
 $row = mysqli_fetch_all($query);
 $concertID = array();
 $concertTitle = array();
@@ -14,6 +14,7 @@ $concertEndDate = array();
 $concertFrequency = array();
 $concertStartTime = array();
 $concertSeats = array();
+$backgroundImage = array();
 for ($i = 0; $i < sizeof($row); $i++) {
     $concertID[$i] = $row[$i][0];
     $concertTitle[$i] = $row[$i][1];
@@ -26,6 +27,7 @@ for ($i = 0; $i < sizeof($row); $i++) {
     $concertFrequency[$i] = $row[$i][8];
     $concertStartTime[$i] = $row[$i][9];
     $concertSeats[$i] = $row[$i][10];
+    $backgroundImage = $row[$i][11];
 }
 ?>
 <!DOCTYPE HTML>
@@ -182,13 +184,13 @@ for ($i = 0; $i < sizeof($row); $i++) {
                 for ($i = 0; $i < sizeof($row); $i++) {
                 ?>
                 <div class="col-md-6 col-lg-4 mb-5" data-aos="fade-up">
-                    <a href="#" class="room">
+                    <a href="concerts-sp.php?id=<?php echo($concertID[$i]) ?>" class="room">
                         <figure class="img-wrap">
                             <?php echo '<img src="' . $concertImage[$i] . '" alt="Free website template" width="400px" height="400px">' ?>
                         </figure>
                         <div class="p-3 text-center room-info">
                             <?php echo '<h2>' . $concertTitle[$i] . '</h2>' ?>
-                            <?php echo ' <span class="text-uppercase letter-spacing-1">Price ' . $concertPrice[$i] . '€</span>' ?>
+                            <?php echo ' <span class="text-uppercase letter-spacing-1">' . $concertGenre[$i] . '</span>' ?>
                         </div>
                     </a>
                 </div>

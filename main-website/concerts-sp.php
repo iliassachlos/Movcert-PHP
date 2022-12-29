@@ -1,59 +1,34 @@
 <?php
 session_start();
 require("include/config.php");
-$query = mysqli_query($sql, "SELECT * FROM movies");
+$id = $_GET['id'];
+$query = mysqli_query($sql, "SELECT * FROM concerts WHERE id='$id'");
 $row = mysqli_fetch_all($query);
-$movieID = array();
-$movieTitle = array();
-$movieGenre = array();
-$movieDescription = array();
-$movieImage = array();
-$moviePrice = array();
-$movieStartDate = array();
-$movieEndDate = array();
-$movieFrequency = array();
-$movieStartTime = array();
-$movieSeats = array();
+$concertID = array();
+$concertTitle = array();
+$concertGenre = array();
+$concertDescription = array();
+$concertImage = array();
+$concertPrice = array();
+$concertStartDate = array();
+$concertEndDate = array();
+$concertFrequency = array();
+$concertStartTime = array();
+$concertSeats = array();
 $backgroundImage = array();
 for ($i = 0; $i < sizeof($row); $i++) {
-    $movieID[$i] = $row[$i][0];
-    $movieTitle[$i] = $row[$i][1];
-    $movieGenre[$i] = $row[$i][2];
-    $movieDescription[$i] = $row[$i][3];
-    $movieImage[$i] = $row[$i][4];
-    $moviePrice[$i] = $row[$i][5];
-    $movieStartDate[$i] = $row[$i][6];
-    $movieEndDate[$i] = $row[$i][7];
-    $movieFrequency[$i] = $row[$i][8];
-    $movieStartTime[$i] = $row[$i][9];
-    $movieSeats[$i] = $row[$i][10];
+    $concertID[$i] = $row[$i][0];
+    $concertTitle[$i] = $row[$i][1];
+    $concertGenre[$i] = $row[$i][2];
+    $concertDescription[$i] = $row[$i][3];
+    $concertImage[$i] = $row[$i][4];
+    $concertPrice[$i] = $row[$i][5];
+    $concertStartDate[$i] = $row[$i][6];
+    $concertEndDate[$i] = $row[$i][7];
+    $concertFrequency[$i] = $row[$i][8];
+    $concertStartTime[$i] = $row[$i][9];
+    $concertSeats[$i] = $row[$i][10];
     $backgroundImage[$i] = $row[$i][11];
-}
-
-if(!empty($_GET["genre"])){
-    $genre = $_GET["genre"];
-} 
-else {
-    $genre = '';
-}
-
-if(!empty($_GET["date"])){
-    $startingDate = $_GET["date"];
-} else {
-    date_default_timezone_set('Europe/Athens');
-    $startingDate = date('m/d/Y h:i:s a', time());
-}
-
-if(!empty($_GET["price-low"])){
-    $priceLow = $_GET["price-low"];
-} else {
-    $priceLow = "0";
-}
-
-if (!empty($_GET["price-high"])) {
-    $priceHigh = $_GET["price-high"];
-} else {
-    $priceHigh = "10000";
 }
 ?>
 <!DOCTYPE HTML>
@@ -62,7 +37,7 @@ if (!empty($_GET["price-high"])) {
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Movcert - Movies</title>
+    <title>Movcert - Concerts</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="" />
     <meta name="keywords" content="" />
@@ -127,12 +102,12 @@ if (!empty($_GET["price-high"])) {
     </header>
     <!-- END head -->
 
-    <section class="site-hero inner-page overlay" style="background-image: url(images/finalcollage.png)"
+    <section class="site-hero inner-page overlay" style="background-image: url(<?php echo($backgroundImage[0]) ?>)"
         data-stellar-background-ratio="0.5">
         <div class="container">
             <div class="row site-hero-inner justify-content-center align-items-center">
                 <div class="col-md-10 text-center" data-aos="fade">
-                    <h1 class="heading mb-3">Movies</h1>
+                    <h1 class="heading mb-3"><?php echo($concertTitle[0]) ?></h1>
                 </div>
             </div>
         </div>
@@ -151,30 +126,38 @@ if (!empty($_GET["price-high"])) {
             <div class="row check-availabilty" id="next">
                 <div class="block-32" data-aos="fade-up" data-aos-offset="-200">
 
-                    <form action="#" method="get">
+                    <form action="#">
                         <div class="row">
                             <div class="col-md-6 mb-3 mb-lg-0 col-lg-3">
-                                <label for="genre" class="font-weight-bold text-black">Movie Genre</label>
+                                <label for="genre" class="font-weight-bold text-black">Music Genre</label>
                                 <div class="field-icon-wrap">
-                                    <input type="text" id="genre" name="genre" class="form-control">
+                                    <select name="" id="genre" class="form-control">
+                                        <option value="">Pop</option>
+                                        <option value="">Rock</option>
+                                        <option value="">Hip-Hop</option>
+                                        <option value="">Metal</option>
+                                    </select>
                                 </div>
                             </div>
-                            <div class="col-md-6 mb-3 mb-md-0 col-lg-3">
-                                    <label for="date" class="cont-weight-bold text-black">Starting Date</label>
-                                    <div class="field-icon-wrap">
-                                            <input type="date" id="date" name="date" class="form-control">
-                                    </div>
+                            <div class="col-md-6 mb-3 mb-lg-0 col-lg-3">
+                                <label for="checkout_date" class="font-weight-bold text-black">Check Out</label>
+                                <div class="field-icon-wrap">
+                                    <div class="icon"><span class="icon-calendar"></span></div>
+                                    <input type="text" id="checkout_date" class="form-control">
+                                </div>
                             </div>
                             <div class="col-md-6 mb-3 mb-md-0 col-lg-3">
                                 <div class="row">
                                     <div class="col-md-6 mb-3 mb-md-0">
-                                        <label for="price-range-low" class="font-weight-bold text-black">Price - Low</label>
+                                        <label for="price-range-low" class="font-weight-bold text-black">Price -
+                                            Low</label>
                                         <div class="field-icon-wrap">
                                             <input type="text" name="price-low" class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-md-6 mb-3 mb-md-0">
-                                        <label for="price-range-high" class="font-weight-bold text-black">Price - High</label>
+                                        <label for="price-range-high" class="font-weight-bold text-black">Price -
+                                            High</label>
                                         <div class="field-icon-wrap">
                                             <input type="text" name="price-high" class="form-control ">
                                         </div>
@@ -182,7 +165,7 @@ if (!empty($_GET["price-high"])) {
                                 </div>
                             </div>
                             <div class="col-md-6 col-lg-3 align-self-end">
-                                <button type="submit" class="btn btn-primary btn-block text-white">Set Filters</button>
+                                <button class="btn btn-primary btn-block text-white">Set Filters</button>
                             </div>
                         </div>
                     </form>
@@ -199,48 +182,16 @@ if (!empty($_GET["price-high"])) {
 
             <div class="row">
                 <?php
-                $query = mysqli_query($sql, "SELECT * 
-                FROM movies
-                WHERE genre LIKE '%" . $genre . "%'
-                AND begin_date >= '".$startingDate."'
-                AND price >='".$priceLow."'
-                AND price <= '".$priceHigh."'
-                ");
-                $row = mysqli_fetch_all($query);
-                $movieID = array();
-                $movieTitle = array();
-                $movieGenre = array();
-                $movieDescription = array();
-                $movieImage = array();
-                $moviePrice = array();
-                $movieStartDate = array();
-                $movieEndDate = array();
-                $movieFrequency = array();  
-                $movieStartTime = array();
-                $movieSeats = array();
-                for ($i = 0; $i < sizeof($row); $i++){
-                    $movieID[$i] = $row[$i][0];
-                    $movieTitle[$i] = $row[$i][1];
-                    $movieGenre[$i] = $row[$i][2];
-                    $movieDescription[$i] = $row[$i][3];
-                    $movieImage[$i] = $row[$i][4];
-                    $moviePrice[$i] = $row[$i][5];
-                    $movieStartDate[$i] = $row[$i][6];
-                    $movieEndDate[$i] = $row[$i][7];
-                    $movieFrequency[$i] = $row[$i][8];
-                    $movieStartTime[$i] = $row[$i][9];
-                    $movieSeats[$i] = $row[$i][10];
-                }
                 for ($i = 0; $i < sizeof($row); $i++) {
                 ?>
                 <div class="col-md-6 col-lg-4 mb-5" data-aos="fade-up">
-                    <a href="movies-sp.php?id=<?php echo($movieID[$i]) ?>" class="room">
+                    <a href="#" class="room">
                         <figure class="img-wrap">
-                            <?php echo '<img src="' . $movieImage[$i] . '" alt="Free website template" width="400px" height="500px">' ?>
+                            <?php echo '<img src="' . $concertImage[$i] . '" alt="Free website template" width="400px" height="400px">' ?>
                         </figure>
                         <div class="p-3 text-center room-info">
-                            <?php echo '<h2>' . $movieTitle[$i] . '</h2>' ?>
-                            <?php echo ' <span class="text-uppercase letter-spacing-1">Price ' . $moviePrice[$i] . '€</span>' ?>
+                            <?php echo '<h2>' . $concertTitle[$i] . '</h2>' ?>
+                            <?php echo ' <span class="text-uppercase letter-spacing-1">' . $concertGenre[$i] . '</span>' ?>
                         </div>
                     </a>
                 </div>
