@@ -1,7 +1,7 @@
 <?php
 session_start();
 require("include/config.php");
-$query = mysqli_query($sql, 'SELECT * FROM movies');
+$query = mysqli_query($sql, "SELECT * FROM movies");
 $row = mysqli_fetch_all($query);
 $movieID = array();
 $movieTitle = array();
@@ -14,6 +14,7 @@ $movieEndDate = array();
 $movieFrequency = array();
 $movieStartTime = array();
 $movieSeats = array();
+$backgroundImage = array();
 for ($i = 0; $i < sizeof($row); $i++) {
     $movieID[$i] = $row[$i][0];
     $movieTitle[$i] = $row[$i][1];
@@ -26,6 +27,7 @@ for ($i = 0; $i < sizeof($row); $i++) {
     $movieFrequency[$i] = $row[$i][8];
     $movieStartTime[$i] = $row[$i][9];
     $movieSeats[$i] = $row[$i][10];
+    $backgroundImage[$i] = $row[$i][11];
 }
 ?>
 <!DOCTYPE HTML>
@@ -182,7 +184,7 @@ for ($i = 0; $i < sizeof($row); $i++) {
                 for ($i = 0; $i < sizeof($row); $i++) {
                 ?>
                 <div class="col-md-6 col-lg-4 mb-5" data-aos="fade-up">
-                    <a href="#" class="room">
+                    <a href="movies-sp.php?id=<?php echo($movieID[$i]) ?>" class="room">
                         <figure class="img-wrap">
                             <?php echo '<img src="' . $movieImage[$i] . '" alt="Free website template" width="400px" height="500px">' ?>
                         </figure>

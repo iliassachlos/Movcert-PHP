@@ -188,7 +188,7 @@ for ($i = 0; $i < sizeof($row); $i++) {
                         </figure>
                         <div class="p-3 text-center room-info">
                             <?php echo '<h2>' . $concertTitle[$i] . '</h2>' ?>
-                            <?php echo ' <span class="text-uppercase letter-spacing-1">Price ' . $concertPrice[$i] . '€</span>' ?>
+                            <?php echo ' <span class="text-uppercase letter-spacing-1">' . $concertGenre[$i] . '</span>' ?>
                         </div>
                     </a>
                 </div>
