@@ -225,7 +225,7 @@
                                                     echo "<td>$movieStartTime[$i]</td>";
                                                     echo "<td>$movieFrequency[$i]</td>";
                                                     echo "<td>$movieSeats[$i]</td>";
-                                                    echo "<td>$movieBackgroundImage</td>";
+                                                    echo "<td><img src='$movieBackgroundImage[$i]' witdh='200px' height='200px'></td>";
                                                 echo "</tr>";
                                             }
                                         ?>
@@ -411,7 +411,7 @@
               <option value="frequency">Frequency</option>
               <option value="start_time">Start Time</option>
               <option value="total_seats_count">Seats</option>
-              <option value="background">Background</option>
+              <option value="background">Background Image</option>
             </select>
           </div>
           <div class="form-group">
