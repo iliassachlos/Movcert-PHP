@@ -145,38 +145,18 @@ if ($ticketType == "movie") {
                     <div class="container">
                         <div class="row">
                             <div class="col-md-12" data-aos="fade-up" data-aos-delay="100">
-                                <?php
-                                if ($_GET["error"] == 1) {
-                                    ?>
-                                    <div class="alert alert-danger">
-                                        <strong>Error Occurred!</strong><br> No Tickets Available!
+                                <form class="bg-white p-md-5 p-4 mb-5 border">
+                                    <div class="row">
+                                        <div class="col-md-12 form-group text-center">
+                                            <label class="text-black font-weight-bold text-center" for="username">Thank
+                                                You!</label>
+                                        </div>
                                     </div>
-                                    <?php
-                                } elseif ($_GET["error"] == 2) {
-                                    ?>
-                                    <div class="alert alert-danger">
-                                        <strong>Error Occurred!</strong><br> Tickets Available are less that the number you
-                                        selected!
+                                    <div class="text-center">
+                                        <a href="index.php">
+                                            <button class="btn text-white" style="background-color: #ffba5a">Back To Home</button>
+                                        </a>
                                     </div>
-                                    <?php
-                                }
-                                ?>
-                                <?php
-                                echo ('<form action="include/ticketBookingLogic.php?booking=' . $ticketType . '&id=' . $id . '" method="post" class="bg-white p-md-5 p-4 mb-5 border">');
-                                ?>
-                                <div class="row">
-                                    <div class="col-md-12 form-group">
-                                        <label class="text-black font-weight-bold" for="username">Tickets To
-                                            Book</label>
-                                        <input type="" id="" name="tickets" class="form-control ">
-                                    </div>
-
-                                </div>
-
-                                <div class="text-center">
-                                    <button class="btn text-white" style="background-color: #ffba5a"
-                                        type="submit">Submit</button>
-                                </div>
                                 </form>
                             </div>
                         </div>
