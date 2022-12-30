@@ -137,8 +137,12 @@ if ($ticketType == "movie") {
         </div>
     </header>
 
-    <section class="site-hero overlay" style="background-image: url(<?php echo ($backgroundImage) ?>)"
-        data-stellar-background-ratio="0.5">
+    <section class="site-hero overlay" style="background-image: url('<?php
+    if ($ticketType == "movie")
+        echo "$backgroundImage[0]";
+    else if ($ticketType == "concert")
+        echo "$backgroundImage";
+    ?>')" data-stellar-background-ratio="0.5">
         <div class="container">
             <div class="row site-hero-inner justify-content-center align-items-center">
                 <section class="section contact-section" id="next">
@@ -146,13 +150,13 @@ if ($ticketType == "movie") {
                         <div class="row">
                             <div class="col-md-12" data-aos="fade-up" data-aos-delay="100">
                                 <?php
-                                if ($_GET["error"] == 1) {
+                                if (@$_GET["error"] == 1) {
                                     ?>
                                     <div class="alert alert-danger">
                                         <strong>Error Occurred!</strong><br> No Tickets Available!
                                     </div>
                                     <?php
-                                } elseif ($_GET["error"] == 2) {
+                                } elseif (@$_GET["error"] == 2) {
                                     ?>
                                     <div class="alert alert-danger">
                                         <strong>Error Occurred!</strong><br> Tickets Available are less that the number you

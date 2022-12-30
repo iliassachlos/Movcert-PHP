@@ -145,7 +145,7 @@ if ($ticketType == "movie") {
                     <div class="container">
                         <div class="row">
                             <div class="col-md-12" data-aos="fade-up" data-aos-delay="100">
-                                <form class="bg-white p-md-5 p-4 mb-5 border">
+                                <form action="index.php" class="bg-white p-md-5 p-4 mb-5 border">
                                     <div class="row">
                                         <div class="col-md-12 form-group text-center">
                                             <label class="text-black font-weight-bold text-center" for="username">Thank
@@ -153,9 +153,7 @@ if ($ticketType == "movie") {
                                         </div>
                                     </div>
                                     <div class="text-center">
-                                        <a href="index.php">
-                                            <button class="btn text-white" style="background-color: #ffba5a">Back To Home</button>
-                                        </a>
+                                            <button type="submit" class="btn text-white" style="background-color: #ffba5a">Back To Home</button>
                                     </div>
                                 </form>
                             </div>

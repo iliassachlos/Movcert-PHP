@@ -25,14 +25,13 @@ if ($ticketType == "movie") {
         $seatsAvailable[$i] = $row[$i][0];
     }
 }
-//Possible Errors Checking
-if($seatsAvailable == 0){
-    header("Location: ../ticket-booking.php?booking=$ticketType&id=$id&error=1"); //Error 1 : No Tickets Available
-}elseif($tickets > $seatsAvailable){
-    header("Location: ../ticket-booking.php?booking=$ticketType&id=$id&error=2"); //Error 2 : Cant book so many tickets
-}
 
-if($ticketType == "movie"){
+//Possible Errors Checking
+if($seatsAvailable[0] == 0){
+    header("Location: ../ticket-booking.php?booking=$ticketType&id=$id&error=1"); //Error 1 : No Tickets Available
+}elseif($tickets > $seatsAvailable[0]){
+    header("Location: ../ticket-booking.php?booking=$ticketType&id=$id&error=2"); //Error 2 : Cant book so many tickets
+} else if($ticketType == "movie"){
     $ticketQuery = mysqli_query($sql, "UPDATE movies SET total_seats_count = total_seats_count-$tickets WHERE id=$id;");
     header("Location: ../thank-you-page.php?booking=$ticketType&id=$id");
 }elseif($ticketType == "concert"){
