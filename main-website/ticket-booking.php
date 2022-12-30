@@ -77,7 +77,7 @@ if ($ticketType == "movie") {
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Movcert - Login</title>
+    <title>Movcert - Booking</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="" />
     <meta name="keywords" content="" />
@@ -170,13 +170,19 @@ if ($ticketType == "movie") {
                                 ?>
                                 <div class="row">
                                     <div class="col-md-12 form-group">
-                                        <label class="text-black font-weight-bold" for="username">Tickets To
-                                            Book</label>
-                                        <input type="" id="" name="tickets" class="form-control ">
+                                        <label class="text-black font-weight-bold" for="tickets">Amount of Tickets To Book</label>
+                                        <input type="text" id="tickets" name="tickets" class="form-control">
+                                    
+                                        <label for="first_name" class="text-black font-weight-bold">First Name</label>
+                                        <input type="text" id="first_name" name="first_name" class="form-control">
+                                    
+                                        <label for="last_name" class="text-black font-weight-bold">Last Name</label>
+                                        <input type="text" id="last_name" name="last_name" class="form-control">
+                                    
+                                        <label for="email" class="text-black font-weight-bold">Email</label>
+                                        <input type="text" id="email" name="email" class="form-control">
                                     </div>
-
                                 </div>
-
                                 <div class="text-center">
                                     <button class="btn text-white" style="background-color: #ffba5a"
                                         type="submit">Submit</button>

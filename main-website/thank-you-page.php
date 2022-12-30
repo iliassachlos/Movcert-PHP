@@ -77,7 +77,7 @@ if ($ticketType == "movie") {
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Movcert - Login</title>
+    <title>Movcert - Thank You</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="" />
     <meta name="keywords" content="" />
@@ -137,7 +137,12 @@ if ($ticketType == "movie") {
         </div>
     </header>
 
-    <section class="site-hero overlay" style="background-image: url(<?php echo ($backgroundImage) ?>)"
+    <section class="site-hero overlay" style="background-image: url(<?php 
+    if ($ticketType == "movie")
+        echo "$backgroundImage[0]";
+    else if ($ticketType == "concert")
+        echo "$backgroundImage";
+    ?>)"
         data-stellar-background-ratio="0.5">
         <div class="container">
             <div class="row site-hero-inner justify-content-center align-items-center">
