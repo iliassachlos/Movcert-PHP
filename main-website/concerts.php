@@ -30,21 +30,20 @@ for ($i = 0; $i < sizeof($row); $i++) {
     $backgroundImage = $row[$i][11];
 }
 
-if(!empty($_GET["genre"])){
+if (!empty($_GET["genre"])) {
     $genre = $_GET["genre"];
-} 
-else {
+} else {
     $genre = '';
 }
 
-if(!empty($_GET["date"])){
+if (!empty($_GET["date"])) {
     $startingDate = $_GET["date"];
 } else {
     date_default_timezone_set('Europe/Athens');
     $startingDate = date('m/d/Y h:i:s a', time());
 }
 
-if(!empty($_GET["price-low"])){
+if (!empty($_GET["price-low"])) {
     $priceLow = $_GET["price-low"];
 } else {
     $priceLow = "0";
@@ -111,9 +110,9 @@ if (!empty($_GET["price-high"])) {
                                             <li><a href="concerts.php">Concerts</a></li>
                                             <li><a href="movies.php">Movies</a></li>
                                             <?php
-                                                if(isset($_SESSION["id"])){
-                                                    echo "<li><a href='../admin-panel/admin.php'>Admin Panel</a></li>";
-                                                }
+                                            if (isset($_SESSION["id"])) {
+                                                echo "<li><a href='../admin-panel/admin.php'>Admin Panel</a></li>";
+                                            }
                                             ?>
                                         </ul>
                                     </div>
@@ -156,27 +155,33 @@ if (!empty($_GET["price-high"])) {
                             <div class="col-md-6 mb-3 mb-lg-0 col-lg-3">
                                 <label for="genre" class="font-weight-bold text-black">Music Genre</label>
                                 <div class="field-icon-wrap">
-                                    <input type="text" id="genre" name="genre" class="form-control">
+                                    <input type="text" id="genre" name="genre" class="form-control"
+                                        onkeyup="saveValue(this);">
                                 </div>
                             </div>
                             <div class="col-md-6 mb-3 mb-lg-0 col-lg-3">
                                 <label for="date" class="font-weight-bold text-black">Check Out</label>
                                 <div class="field-icon-wrap">
-                                    <input type="date" id="date" name="date" class="form-control">
+                                    <input type="date" id="date" name="date" class="form-control"
+                                        onkeyup="saveValue(this);">
                                 </div>
                             </div>
                             <div class="col-md-6 mb-3 mb-md-0 col-lg-3">
                                 <div class="row">
                                     <div class="col-md-6 mb-3 mb-md-0">
-                                        <label for="price-range-low" class="font-weight-bold text-black">Price - Low</label>
+                                        <label for="price-range-low" class="font-weight-bold text-black">Price -
+                                            Low</label>
                                         <div class="field-icon-wrap">
-                                            <input type="text" name="price-low" class="form-control">
+                                            <input id="price-low" type="text" name="price-low" class="form-control"
+                                                onkeyup="saveValue(this);">
                                         </div>
                                     </div>
                                     <div class="col-md-6 mb-3 mb-md-0">
-                                        <label for="price-range-high" class="font-weight-bold text-black">Price - High</label>
+                                        <label for="price-range-high" class="font-weight-bold text-black">Price -
+                                            High</label>
                                         <div class="field-icon-wrap">
-                                            <input type="text" name="price-high" class="form-control ">
+                                            <input id="price-high" type="text" name="price-high" class="form-control"
+                                                onkeyup="saveValue(this);">
                                         </div>
                                     </div>
                                 </div>
@@ -202,9 +207,9 @@ if (!empty($_GET["price-high"])) {
                 $query = mysqli_query($sql, "SELECT * 
                 FROM concerts
                 WHERE genre LIKE '%" . $genre . "%'
-                AND begin_date >= '".$startingDate."'
-                AND price >='".$priceLow."'
-                AND price <= '".$priceHigh."'
+                AND begin_date >= '" . $startingDate . "'
+                AND price >='" . $priceLow . "'
+                AND price <= '" . $priceHigh . "'
                 ");
                 $row = mysqli_fetch_all($query);
                 $concertID = array();
@@ -234,25 +239,25 @@ if (!empty($_GET["price-high"])) {
                     $backgroundImage = $row[$i][11];
                 }
                 for ($i = 0; $i < sizeof($row); $i++) {
-                ?>
-                <div class="col-md-6 col-lg-4 mb-5" data-aos="fade-up">
-                    <a href="concerts-sp.php?id=<?php echo($concertID[$i]) ?>" class="room">
-                        <figure class="img-wrap">
-                            <?php echo '<img src="' . $concertImage[$i] . '" alt="Free website template" width="400px" height="400px">' ?>
-                        </figure>
-                        <div class="p-3 text-center room-info">
-                            <?php echo '<h2>' . $concertTitle[$i] . '</h2>' ?>
-                            <?php echo ' <span class="text-uppercase letter-spacing-1">' . $concertGenre[$i] . '</span>' ?>
-                        </div>
-                    </a>
-                </div>
-                <?php } ?>
+                    ?>
+                    <div class="col-md-6 col-lg-4 mb-5" data-aos="fade-up">
+                        <a href="concerts-sp.php?id=<?php echo ($concertID[$i]) ?>" class="room">
+                            <figure class="img-wrap">
+                                <?php echo '<img src="' . $concertImage[$i] . '" alt="Free website template" width="400px" height="400px">' ?>
+                            </figure>
+                            <div class="p-3 text-center room-info">
+                                <?php echo '<h2>' . $concertTitle[$i] . '</h2>' ?>
+                                <?php echo ' <span class="text-uppercase letter-spacing-1">' . $concertGenre[$i] . '</span>' ?>
+                            </div>
+                        </a>
+                    </div>
+                    <?php } ?>
 
             </div>
         </div>
     </section>
 
-   
+
     <footer class="bg-dark text-center text-lg-start">
         <div class="text-center p-3" style="background-color: #1A1A1A">
             Made With &nbsp; <i class="fa fa-heart"></i> &nbsp; By Alexandros and Elias
@@ -271,5 +276,27 @@ if (!empty($_GET["price-high"])) {
     <script src="js/jquery.timepicker.min.js"></script>
     <script src="js/main.js"></script>
 </body>
+<script type="text/javascript">
+    document.getElementById("genre").value = getSavedValue("genre");
+    document.getElementById("date").value = getSavedValue("date");
+    document.getElementById("price-low").value = getSavedValue("price-low");
+    document.getElementById("price-high").value = getSavedValue("price-high");     // set the value to this input
+    /* Here you can add more inputs to set value. if it's saved */
+
+    //Save the value function - save it to localStorage as (ID, VALUE)
+    function saveValue(e) {
+        var id = e.id;  // get the sender's id to save it . 
+        var val = e.value; // get the value. 
+        localStorage.setItem(id, val);// Every time user writing something, the localStorage's value will override . 
+    }
+
+    //get the saved value function - return the value of "v" from localStorage. 
+    function getSavedValue(v) {
+        if (!localStorage.getItem(v)) {
+            return "";// You can change this to your defualt value. 
+        }
+        return localStorage.getItem(v);
+    }
+</script>
 
 </html>
