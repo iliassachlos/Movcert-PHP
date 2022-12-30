@@ -1,10 +1,11 @@
 <?php
 session_start();
 require("include/config.php");
+
 $id = $_GET['id'];
 $query = mysqli_query($sql, "SELECT * FROM concerts WHERE id='$id'");
 $row = mysqli_fetch_all($query);
-$concertID = array();
+$movieID = array();
 $concertTitle = array();
 $concertGenre = array();
 $concertDescription = array();
@@ -55,6 +56,9 @@ for ($i = 0; $i < sizeof($row); $i++) {
 
     <link rel="stylesheet" href="fonts/ionicons/css/ionicons.min.css">
     <link rel="stylesheet" href="fonts/fontawesome/css/font-awesome.min.css">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css"
+        integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7" crossorigin="anonymous">
 
     <!-- Theme Style -->
     <link rel="stylesheet" href="css/style.css">
@@ -86,9 +90,9 @@ for ($i = 0; $i < sizeof($row); $i++) {
                                             <li><a href="concerts.php">Concerts</a></li>
                                             <li><a href="movies.php">Movies</a></li>
                                             <?php
-                                                if(isset($_SESSION["id"])){
-                                                    echo "<li><a href='../admin-panel/admin.php'>Admin Panel</a></li>";
-                                                }
+                                            if (isset($_SESSION["id"])) {
+                                                echo "<li><a href='../admin-panel/admin.php'>Admin Panel</a></li>";
+                                            }
                                             ?>
                                         </ul>
                                     </div>
@@ -102,12 +106,14 @@ for ($i = 0; $i < sizeof($row); $i++) {
     </header>
     <!-- END head -->
 
-    <section class="site-hero inner-page overlay" style="background-image: url(<?php echo($backgroundImage[0]) ?>)"
+    <section class="site-hero inner-page overlay" style="background-image: url(<?php echo ($backgroundImage[0]) ?>);"
         data-stellar-background-ratio="0.5">
         <div class="container">
             <div class="row site-hero-inner justify-content-center align-items-center">
                 <div class="col-md-10 text-center" data-aos="fade">
-                    <h1 class="heading mb-3"><?php echo($concertTitle[0]) ?></h1>
+                    <h1 class="heading mb-3">
+                        <?php echo ($concertTitle[0]) ?>
+                    </h1>
                 </div>
             </div>
         </div>
@@ -125,50 +131,12 @@ for ($i = 0; $i < sizeof($row); $i++) {
 
             <div class="row check-availabilty" id="next">
                 <div class="block-32" data-aos="fade-up" data-aos-offset="-200">
+                    <div class="container text-center">
+                        <h1>
+                            <?php echo ($concertGenre[0]) ?>
+                        </h1>
+                    </div>
 
-                    <form action="#">
-                        <div class="row">
-                            <div class="col-md-6 mb-3 mb-lg-0 col-lg-3">
-                                <label for="genre" class="font-weight-bold text-black">Music Genre</label>
-                                <div class="field-icon-wrap">
-                                    <select name="" id="genre" class="form-control">
-                                        <option value="">Pop</option>
-                                        <option value="">Rock</option>
-                                        <option value="">Hip-Hop</option>
-                                        <option value="">Metal</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-6 mb-3 mb-lg-0 col-lg-3">
-                                <label for="checkout_date" class="font-weight-bold text-black">Check Out</label>
-                                <div class="field-icon-wrap">
-                                    <div class="icon"><span class="icon-calendar"></span></div>
-                                    <input type="text" id="checkout_date" class="form-control">
-                                </div>
-                            </div>
-                            <div class="col-md-6 mb-3 mb-md-0 col-lg-3">
-                                <div class="row">
-                                    <div class="col-md-6 mb-3 mb-md-0">
-                                        <label for="price-range-low" class="font-weight-bold text-black">Price -
-                                            Low</label>
-                                        <div class="field-icon-wrap">
-                                            <input type="text" name="price-low" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 mb-3 mb-md-0">
-                                        <label for="price-range-high" class="font-weight-bold text-black">Price -
-                                            High</label>
-                                        <div class="field-icon-wrap">
-                                            <input type="text" name="price-high" class="form-control ">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-lg-3 align-self-end">
-                                <button class="btn btn-primary btn-block text-white">Set Filters</button>
-                            </div>
-                        </div>
-                    </form>
                 </div>
 
 
@@ -183,25 +151,58 @@ for ($i = 0; $i < sizeof($row); $i++) {
             <div class="row">
                 <?php
                 for ($i = 0; $i < sizeof($row); $i++) {
-                ?>
-                <div class="col-md-6 col-lg-4 mb-5" data-aos="fade-up">
-                    <a href="#" class="room">
+                    ?>
+                    <div class="col-md-6 col-lg-6 mb-5" data-aos="fade-up">
                         <figure class="img-wrap">
                             <?php echo '<img src="' . $concertImage[$i] . '" alt="Free website template" width="400px" height="400px">' ?>
                         </figure>
-                        <div class="p-3 text-center room-info">
-                            <?php echo '<h2>' . $concertTitle[$i] . '</h2>' ?>
-                            <?php echo ' <span class="text-uppercase letter-spacing-1">' . $concertGenre[$i] . '</span>' ?>
-                        </div>
-                    </a>
-                </div>
-                <?php } ?>
 
+                    </div>
+                    <div class="col-md-6 col-lg-6 mb-5" data-aos="fade-up">
+                        <?php echo '<h4>' . $concertDescription[$i] . '</h4>' ?>
+                        <hr />
+                        <p>
+                            <i class="fa fa-solid fa-calendar"></i>
+                            <?php echo ('From : ' . $concertStartDate[0] . '&nbsp&nbsp&nbsp Till : ' . $concertEndDate[0]) ?>
+                        </p>
+                        <p>
+                            <i class="fa fa-solid fa-ticket"></i>
+                            <?php echo ("Tickets Available : " . $concertSeats[0]) ?>
+                        </p>
+                        <p>
+                            <i class="fa fa-duotone fa-film"></i>
+                            <?php
+                            if ($concertFrequency[0] == 0) {
+                                echo ("Frequency : Once");
+                            } elseif ($concertFrequency[0] == 1) {
+                                echo ("Frequency : Everyday");
+                            } elseif ($concertFrequency[0] == 2) {
+                                echo ("Frequency : Every 2 Days");
+                            }
+                            ?>
+                        </p>
+                        <?php echo ' <span class="text-uppercase letter-spacing-1">Price ' . $concertPrice[$i] . '€</span>' ?>
+                        <br>
+                        <br>
+                        <br>
+                        <p>
+                            <?php
+                            if ($concertSeats[0] == 0) {
+                                echo ("No More Seats Available!");
+                            } else {
+                                echo ('<a href="ticket-booking.php?booking=concert&id='.$id.'">');
+                                echo ('<button type="button" class="btn btn-warning" style="color: white">Book A Ticket</button>');
+                                echo ('</a>');
+                            }
+                            ?>
+                        </p>
+                    </div>
+                    <?php } ?>
             </div>
         </div>
     </section>
 
-   
+
     <footer class="bg-dark text-center text-lg-start">
         <div class="text-center p-3" style="background-color: #1A1A1A">
             Made With &nbsp; <i class="fa fa-heart"></i> &nbsp; By Alexandros and Elias

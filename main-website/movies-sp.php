@@ -56,6 +56,9 @@ for ($i = 0; $i < sizeof($row); $i++) {
 
     <link rel="stylesheet" href="fonts/ionicons/css/ionicons.min.css">
     <link rel="stylesheet" href="fonts/fontawesome/css/font-awesome.min.css">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css"
+        integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7" crossorigin="anonymous">
 
     <!-- Theme Style -->
     <link rel="stylesheet" href="css/style.css">
@@ -87,9 +90,9 @@ for ($i = 0; $i < sizeof($row); $i++) {
                                             <li><a href="concerts.php">Concerts</a></li>
                                             <li><a href="movies.php">Movies</a></li>
                                             <?php
-                                                if(isset($_SESSION["id"])){
-                                                    echo "<li><a href='../admin-panel/admin.php'>Admin Panel</a></li>";
-                                                }
+                                            if (isset($_SESSION["id"])) {
+                                                echo "<li><a href='../admin-panel/admin.php'>Admin Panel</a></li>";
+                                            }
                                             ?>
                                         </ul>
                                     </div>
@@ -103,12 +106,14 @@ for ($i = 0; $i < sizeof($row); $i++) {
     </header>
     <!-- END head -->
 
-    <section class="site-hero inner-page overlay" style="background-image: url(<?php echo($backgroundImage[0]) ?>);"
+    <section class="site-hero inner-page overlay" style="background-image: url(<?php echo ($backgroundImage[0]) ?>);"
         data-stellar-background-ratio="0.5">
         <div class="container">
             <div class="row site-hero-inner justify-content-center align-items-center">
                 <div class="col-md-10 text-center" data-aos="fade">
-                    <h1 class="heading mb-3"><?php echo($movieTitle[0]) ?></h1>
+                    <h1 class="heading mb-3">
+                        <?php echo ($movieTitle[0]) ?>
+                    </h1>
                 </div>
             </div>
         </div>
@@ -127,9 +132,11 @@ for ($i = 0; $i < sizeof($row); $i++) {
             <div class="row check-availabilty" id="next">
                 <div class="block-32" data-aos="fade-up" data-aos-offset="-200">
                     <div class="container text-center">
-                        <h1>TEST</h1>
+                        <h1>
+                            <?php echo ($movieGenre[0]) ?>
+                        </h1>
                     </div>
-                    
+
                 </div>
 
 
@@ -144,25 +151,58 @@ for ($i = 0; $i < sizeof($row); $i++) {
             <div class="row">
                 <?php
                 for ($i = 0; $i < sizeof($row); $i++) {
-                ?>
-                <div class="col-md-6 col-lg-4 mb-5" data-aos="fade-up">
-                    <a href="#" class="room">
+                    ?>
+                    <div class="col-md-6 col-lg-6 mb-5" data-aos="fade-up">
                         <figure class="img-wrap">
                             <?php echo '<img src="' . $movieImage[$i] . '" alt="Free website template" width="400px" height="500px">' ?>
                         </figure>
-                        <div class="p-3 text-center room-info">
-                            <?php echo '<h2>' . $movieTitle[$i] . '</h2>' ?>
-                            <?php echo ' <span class="text-uppercase letter-spacing-1">Price ' . $moviePrice[$i] . '€</span>' ?>
-                        </div>
-                    </a>
-                </div>
-                <?php } ?>
 
+                    </div>
+                    <div class="col-md-6 col-lg-6 mb-5" data-aos="fade-up">
+                        <?php echo '<h4>' . $movieDescription[$i] . '</h4>' ?>
+                        <hr />
+                        <p>
+                            <i class="fa fa-solid fa-calendar"></i>
+                            <?php echo ('From : ' . $movieStartDate[0] . '&nbsp&nbsp&nbsp Till : ' . $movieEndDate[0]) ?>
+                        </p>
+                        <p>
+                            <i class="fa fa-solid fa-ticket"></i>
+                            <?php echo ("Tickets Available : " . $movieSeats[0]) ?>
+                        </p>
+                        <p>
+                            <i class="fa fa-duotone fa-film"></i>
+                            <?php
+                            if ($movieFrequency[0] == 0) {
+                                echo ("Frequency : Once");
+                            } elseif ($movieFrequency[0] == 1) {
+                                echo ("Frequency : Everyday");
+                            } elseif ($movieFrequency[0] == 2) {
+                                echo ("Frequency : Every 2 Days");
+                            }
+                            ?>
+                        </p>
+                        <?php echo ' <span class="text-uppercase letter-spacing-1">Price ' . $moviePrice[$i] . '€</span>' ?>
+                        <br>
+                        <br>
+                        <br>
+                        <p>
+                            <?php
+                            if ($movieSeats[0] == 0) {
+                                echo ("No More Seats Available!");
+                            } else {
+                                echo ('<a href="ticket-booking.php?booking=movie&id='.$id.'">');
+                                echo ('<button type="button" class="btn btn-warning" style="color: white">Book A Ticket</button>');
+                                echo ('</a>');
+                            }
+                            ?>
+                        </p>
+                    </div>
+                    <?php } ?>
             </div>
         </div>
     </section>
 
-   
+
     <footer class="bg-dark text-center text-lg-start">
         <div class="text-center p-3" style="background-color: #1A1A1A">
             Made With &nbsp; <i class="fa fa-heart"></i> &nbsp; By Alexandros and Elias
