@@ -40,6 +40,12 @@ if ($ticketType == "movie") {
         $movieSeats[$i] = $row[$i][10];
         $backgroundImage[$i] = $row[$i][11];
     }
+    $ticketIDquery = mysqli_query($sql, "SELECT id FROM movie_tickets ORDER BY id DESC LIMIT 1");
+    $row = mysqli_fetch_assoc($ticketIDquery);
+    $ticketID = $row['id'];
+    $priceQuery = mysqli_query($sql, "SELECT final_price FROM movie_tickets WHERE id='$ticketID'");
+    $row = mysqli_fetch_assoc($priceQuery);
+    $finalPrice = $row['final_price'];
 } elseif ($ticketType == "concert") {
     $query = mysqli_query($sql, "SELECT * FROM concerts WHERE id='$id'");
     $row = mysqli_fetch_all($query);
@@ -69,9 +75,14 @@ if ($ticketType == "movie") {
         $concertSeats[$i] = $row[$i][10];
         $backgroundImage = $row[$i][11];
     }
+    $ticketIDquery = mysqli_query($sql, "SELECT id FROM concert_tickets ORDER BY id DESC LIMIT 1");
+    $row = mysqli_fetch_assoc($ticketIDquery);
+    $ticketID = $row['id'];
+    $priceQuery = mysqli_query($sql, "SELECT final_price FROM concert_tickets WHERE id='$ticketID'");
+    $row = mysqli_fetch_assoc($priceQuery);
+    $finalPrice = $row['final_price'];
 }
 ?>
-<!DOCTYPE HTML>
 <html lang="en">
 
 <head>
@@ -151,10 +162,15 @@ if ($ticketType == "movie") {
                         <div class="row">
                             <div class="col-md-12" data-aos="fade-up" data-aos-delay="100">
                                 <form action="index.php" class="bg-white p-md-5 p-4 mb-5 border">
+                                <div class="row">
+                                        <div class="col-md-12 form-group text-center">
+                                            <div class="text-black font-weight-bold text-center">The Final Price for your tickets is <?= $finalPrice ?>€ </div>
+                                        </div>
+                                    </div>
                                     <div class="row">
                                         <div class="col-md-12 form-group text-center">
                                             <label class="text-black font-weight-bold text-center" for="username">Thank
-                                                You!</label>
+                                                You for your Purchase!</label>
                                         </div>
                                     </div>
                                     <div class="text-center">
