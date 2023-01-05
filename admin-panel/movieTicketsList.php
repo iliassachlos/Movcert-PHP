@@ -2,8 +2,27 @@
     session_start();
     require('../main-website/include/config.php');
     if (!isset($_SESSION['id'])) {
-        header("Location: ../main-website/login.php");
-    } 
+        header("Location: ../index.php");
+    }
+
+$query = mysqli_query($sql, "SELECT * FROM movie_tickets");
+$row = mysqli_fetch_all($query);
+$ticketID = array();
+$movieID = array();
+$ticketAmount = array();
+$finalPrice = array();
+$firstName = array();
+$lastName = array();
+$email = array();
+for ($i=0; $i<sizeof($row); $i++){
+    $ticketID[$i] = $row[$i][0];
+    $movieID[$i] = $row[$i][1];
+    $ticketAmount[$i] = $row[$i][2];
+    $finalPrice[$i] = $row[$i][3];
+    $firstName[$i] = $row[$i][4];
+    $lastName[$i] = $row[$i][5];
+    $email[$i] = $row[$i][6];
+}
 ?>
 
 <!DOCTYPE html>
@@ -17,7 +36,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Movcert - Admin Panel</title>
+    <title>Movcert - Admin Panel - Movie Tickets</title>
 
     <!-- Custom fonts for this template -->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -143,8 +162,58 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Welcome!</h1>
-                    <p class="mb-4">Welcome to the Admin Table, you can select what you want to do from the navigation bar in the left.</p>
+                    <h1 class="h3 mb-2 text-gray-800">Movie Tickets</h1>
+                    <p class="mb-4">Below you can see all the booked movie tickets.</p>
+
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Booked Tickets</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Movie ID</th>
+                                            <th>Ticket Amount</th>
+                                            <th>Final Price</th>
+                                            <th>First Name</th>
+                                            <th>Last Name</th>
+                                            <th>Email</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Movie ID</th>
+                                            <th>Ticket Amount</th>
+                                            <th>Final Price</th>
+                                            <th>First Name</th>
+                                            <th>Last Name</th>
+                                            <th>Email</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                        <?php
+                                            for ($i = 0; $i < sizeof($row); $i++){
+                                                echo "<tr>";
+                                                    echo "<td>$ticketID[$i]</td>";
+                                                    echo "<td>$movieID[$i]</td>";
+                                                    echo "<td>$ticketAmount[$i]</td>";
+                                                    echo "<td>$finalPrice[$i]</td>";
+                                                    echo "<td>$firstName[$i]</td>";
+                                                    echo "<td>$lastName[$i]</td>";
+                                                    echo "<td>$email[$i]</td>";
+                                                echo "</tr>";
+                                            }
+                                        ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
                 <!-- /.container-fluid -->
@@ -173,26 +242,6 @@
         <i class="fas fa-angle-up"></i>
     </a>
 
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -209,7 +258,7 @@
 
     <!-- Page level custom scripts -->
     <script src="js/demo/datatables-demo.js"></script>
-
+</script>
 </body>
 
 </html>

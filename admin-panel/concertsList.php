@@ -46,7 +46,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Movcert - Admin Panel</title>
+    <title>Movcert - Admin Panel - Concerts</title>
 
     <!-- Custom fonts for this template -->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -99,6 +99,22 @@
                 <a class="nav-link" href="concertsList.php">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Concerts</span></a>
+            </li>
+
+            <li>
+                <hr style="border-top: 0.5px solid #4e73df">
+            </li>
+
+            <li class="nav-item active">
+                <a class="nav-link" href="movieTicketsList.php">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Movie Tickets</span></a>
+            </li>
+
+            <li class="nav-item active">
+                <a class="nav-link" href="concertTicketsList.php">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Concert Tickets</span></a>
             </li>
 
             <li>
