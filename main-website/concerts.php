@@ -30,6 +30,12 @@ for ($i = 0; $i < sizeof($row); $i++) {
     $backgroundImage = $row[$i][11];
 }
 
+if (!empty($_GET["title"])) {
+    $title = $_GET["title"];
+} else {
+    $title = '';
+}
+
 if (!empty($_GET["genre"])) {
     $genre = $_GET["genre"];
 } else {
@@ -153,6 +159,13 @@ if (!empty($_GET["price-high"])) {
                     <form action="#" method="get">
                         <div class="row">
                             <div class="col-md-6 mb-3 mb-lg-0 col-lg-3">
+                                <label for="title" class="font-weight-bold text-black">Concert Title</label>
+                                <div class="field-icon-wrap">
+                                    <input type="text" id="title" name="title" class="form-control"
+                                        onkeyup="saveValue(this);">
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3 mb-lg-0 col-lg-3">
                                 <label for="genre" class="font-weight-bold text-black">Music Genre</label>
                                 <div class="field-icon-wrap">
                                     <input type="text" id="genre" name="genre" class="form-control"
@@ -187,7 +200,7 @@ if (!empty($_GET["price-high"])) {
                                 </div>
                             </div>
                             <div class="col-md-6 col-lg-3 align-self-end">
-                                <button type="submit" class="btn btn-primary btn-block text-white">Set Filters</button>
+                                <button type="submit" class="btn btn-primary btn-block text-white" style="margin-left: 168%; margin-top: 10%;">Set Filters</button>
                             </div>
                         </div>
                     </form>
@@ -206,7 +219,8 @@ if (!empty($_GET["price-high"])) {
                 <?php
                 $query = mysqli_query($sql, "SELECT * 
                 FROM concerts
-                WHERE genre LIKE '%" . $genre . "%'
+                WHERE title LIKE '%" . $title . "%'  
+                AND genre LIKE '%" . $genre . "%'
                 AND begin_date >= '" . $startingDate . "'
                 AND price >='" . $priceLow . "'
                 AND price <= '" . $priceHigh . "'
@@ -277,6 +291,7 @@ if (!empty($_GET["price-high"])) {
     <script src="js/main.js"></script>
 </body>
 <script type="text/javascript">
+    document.getElementById("title").value = getSavedValue("title");
     document.getElementById("genre").value = getSavedValue("genre");
     document.getElementById("date").value = getSavedValue("date");
     document.getElementById("price-low").value = getSavedValue("price-low");
