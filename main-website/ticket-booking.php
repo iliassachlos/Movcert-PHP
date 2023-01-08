@@ -180,7 +180,7 @@ if ($ticketType == "movie") {
                                         <input type="text" id="last_name" name="last_name" class="form-control">
                                     
                                         <label for="email" class="text-black font-weight-bold">Email</label>
-                                        <input type="text" id="email" name="email" class="form-control">
+                                        <input type="email" id="email" name="email" class="form-control">
                                     </div>
                                 </div>
                                 <div class="text-center">
